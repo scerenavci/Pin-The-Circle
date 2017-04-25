@@ -9,12 +9,13 @@ public class NeedleMovementScript : MonoBehaviour {
 
     private bool canFireNeedle; //initially equal to false
     private bool touchedTheCircle;
-    private float forceY = 70f;
+    private float forceY = 5f;
     private Rigidbody2D myBody;
 
     void Awake()
     {
         Initialize();
+        FireTheNeedle();
 
     }
 
@@ -34,7 +35,22 @@ public class NeedleMovementScript : MonoBehaviour {
     public void FireTheNeedle()
     {
         needleBody.SetActive(true);
-        myBody.isKinematic = false; //it it' true => physics is not affecting it
+        myBody.isKinematic = false; //if it's true => physics is not affecting it
         canFireNeedle = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D target) //target -> game object that we touched
+    {
+        if (touchedTheCircle) //already touched ?
+        {
+            return;
+        }
+        if (target.tag =="Circle")
+        {
+            canFireNeedle = false;
+            touchedTheCircle = true;
+
+            myBody.isKinematic = true; //to pin out game object, we dont want our game object moving
+        }
     }
 }
