@@ -51,6 +51,7 @@ public class NeedleMovementScript : MonoBehaviour {
             touchedTheCircle = true;
 
             myBody.isKinematic = true; //to pin out game object, we dont want our game object moving
+            gameObject.transform.SetParent(target.transform);
         }
     }
 }
