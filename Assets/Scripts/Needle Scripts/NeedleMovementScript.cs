@@ -15,7 +15,7 @@ public class NeedleMovementScript : MonoBehaviour {
     void Awake()
     {
         Initialize();
-        FireTheNeedle();
+        //FireTheNeedle();
 
     }
 
@@ -52,6 +52,11 @@ public class NeedleMovementScript : MonoBehaviour {
 
             myBody.isKinematic = true; //to pin out game object, we dont want our game object moving
             gameObject.transform.SetParent(target.transform);
+
+            //if (GameManager.instance != null) // another way yo create needles
+            //{
+            //    GameManager.instance.InstantiateNeedle();
+            //}
         }
     }
 }
