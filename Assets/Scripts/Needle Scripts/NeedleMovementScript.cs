@@ -53,6 +53,10 @@ public class NeedleMovementScript : MonoBehaviour {
             myBody.isKinematic = true; //to pin out game object, we dont want our game object moving
             gameObject.transform.SetParent(target.transform);
 
+            if (ScoreManager.instance !=null)
+            {
+                ScoreManager.instance.SetScore();
+            }
             //if (GameManager.instance != null) // another way yo create needles
             //{
             //    GameManager.instance.InstantiateNeedle();
