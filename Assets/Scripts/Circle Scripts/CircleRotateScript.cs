@@ -13,8 +13,8 @@ public class CircleRotateScript : MonoBehaviour
     // Use this for initialization
 	void Awake ()
 	{
-
 	    canRotate = true;
+	    StartCoroutine(ChangeRotation());
 	}
 	
 	// Update is called once per frame
@@ -25,6 +25,18 @@ public class CircleRotateScript : MonoBehaviour
 	        RotateTheCircle();
 	    }
 	}
+
+    IEnumerator ChangeRotation()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (Random.Range(0, 2) > 0)
+            rotationSpeed = -Random.Range(50, 100);
+        else
+            rotationSpeed = Random.Range(50, 100);
+
+        StartCoroutine(ChangeRotation());
+    }
 
     void RotateTheCircle()
     {
